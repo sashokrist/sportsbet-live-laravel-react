@@ -58,48 +58,50 @@ Frontend will be available at: `http://localhost:5173` (or as configured in Vite
 
 ## Functionality
 
-- Live soccer scores
-- User authentication (register/login)
-- Place and manage bets
-- View match details and statistics
+- View live soccer scores by league
+- Select a league to see recent and upcoming matches
+- Simple web interface (Blade or React)
+- Data fetched from The Odds API
 
 ---
 
 ## Main Routes
 
 ### API Routes (`routes/api.php`)
-- `POST /api/register` — Register user
-- `POST /api/login` — Login user
-- `GET /api/matches` — List matches
-- `GET /api/matches/{id}` — Match details
-- `POST /api/bets` — Place bet
+- `GET /api/sports` — List all available sports (not matches)
+- `GET /api/scores?league={league_key}` — Get scores for a specific league
+- `GET /api/leagues` — List supported league keys
 
 ### Web Routes (`routes/web.php`)
-- `/` — Home (React app)
-- `/login` — Login page
-- `/register` — Register page
+- `GET /scores` — Show league selection form
+- `GET /scores/show?league={league_key}` — Show scores for selected league
+- `GET /sports` — React/Blade sports page
 
 ---
 
 ## Project Structure
 
 ```
-sportsbet-live-laravel-react/
-├── app/                # Laravel backend code
-├── resources/
-│   ├── js/             # React frontend (Vite)
-│   └── views/          # Blade templates
-├── routes/
-│   ├── api.php         # API routes
-│   └── web.php         # Web routes
-├── public/
-├── database/
-├── .env
-├── package.json
-├── vite.config.js
-└── README.md
+resources/
+  js/Pages/Sports.jsx      # React sports page
+  views/
+    layouts/app.blade.php  # Main Blade layout
+    sports.blade.php       # Blade sports page
+    scores/index.blade.php # League selection
+    scores/show.blade.php  # League scores table
+routes/
+  web.php                  # Web routes
+app/
+  Http/Controllers/
+    Api/SportsController.php   # API endpoints
+    Web/ScoresController.php   # Web endpoints
 ```
 
+---
+
+## Author
+
+**sasho_dev**
 ---
 
 ## Author
