@@ -7,60 +7,101 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# SportsBet Live Laravel React
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A web application for live soccer scores and sports betting, built with Laravel (API backend) and React (frontend).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Clone the Repository
 
-## Learning Laravel
+**SSH:**
+```bash
+git clone git@github.com:sashokrist/sportsbet-live-laravel-react.git
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**HTTPS:**
+```bash
+git clone https://github.com/sashokrist/sportsbet-live-laravel-react.git
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation & Running
 
-## Laravel Sponsors
+### 1. Backend (API - Laravel)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+cd sportsbet-live-laravel-react
+composer install
+cp .env.example .env
+php artisan key:generate
+# Set up your database credentials in .env
+php artisan migrate --seed
+php artisan serve
+```
 
-### Premium Partners
+API will be available at: `http://127.0.0.1:8000`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+---
 
-## Contributing
+### 2. Frontend (React + Vite)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+npm install
+npm run dev
+```
 
-## Code of Conduct
+Frontend will be available at: `http://localhost:5173` (or as configured in Vite)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## Functionality
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Live soccer scores
+- User authentication (register/login)
+- Place and manage bets
+- View match details and statistics
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Main Routes
+
+### API Routes (`routes/api.php`)
+- `POST /api/register` — Register user
+- `POST /api/login` — Login user
+- `GET /api/matches` — List matches
+- `GET /api/matches/{id}` — Match details
+- `POST /api/bets` — Place bet
+
+### Web Routes (`routes/web.php`)
+- `/` — Home (React app)
+- `/login` — Login page
+- `/register` — Register page
+
+---
+
+## Project Structure
+
+```
+sportsbet-live-laravel-react/
+├── app/                # Laravel backend code
+├── resources/
+│   ├── js/             # React frontend (Vite)
+│   └── views/          # Blade templates
+├── routes/
+│   ├── api.php         # API routes
+│   └── web.php         # Web routes
+├── public/
+├── database/
+├── .env
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+---
+
+## Author
+
+**sasho_dev**
