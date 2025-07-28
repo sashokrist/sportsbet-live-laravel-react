@@ -102,8 +102,3 @@ app/
 ## Author
 
 **sasho_dev**
----
-
-## Author
-
-**sasho_dev**
